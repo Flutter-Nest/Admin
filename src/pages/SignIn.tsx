@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 import { ChangeEvent, FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SignupInput from "../components/inputs/SignupInput";
@@ -39,7 +40,8 @@ const SignIn: FC = () => {
         {},
         { headers }
       );
-
+      Cookies.set("accessToken", result.data.accessToken);
+      Cookies.set("refreshToken", result.data.refreshToken);
       navigate("/main");
     } catch (error: any) {
       console.error("Signin error:", error.response?.data || error.message);
