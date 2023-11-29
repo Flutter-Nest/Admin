@@ -1,0 +1,5 @@
+function Main() {
+  return <div className=" text-6xl">Main</div>;
+}
+
+export default Main;
