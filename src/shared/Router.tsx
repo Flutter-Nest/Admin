@@ -1,13 +1,12 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-// import Login from "src/pages/Login";
-// import Signup from "src/pages/Signup";
 import { useEffect } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
 import { isLoggedInState } from "../states/userState";
 
 import Cookies from "js-cookie";
 import Main from "../pages/Main";
+import SignIn from "../pages/SignIn";
 const Router = () => {
   const setIsLoggedIn = useSetRecoilState(isLoggedInState);
 
@@ -26,10 +25,8 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} /> */}
-
-        <Route path="/" element={<Main />} />
+        <Route path="/" element={<SignIn />} />
+        <Route path="/main" element={<Main />} />
       </Routes>
     </BrowserRouter>
   );
