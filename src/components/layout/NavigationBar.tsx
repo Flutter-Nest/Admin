@@ -38,13 +38,13 @@ function Navbar() {
             onClick={() => navigate("/consulting")}
           >
             Consulting
-          </button>{" "}
+          </button>
           <button
             className="flex h-full justify-center items-center bg-blue-300 px-4 rounded-lg text-black hover:text-white relative"
             onClick={() => navigate("/link")}
           >
             LINK
-          </button>{" "}
+          </button>
           <button
             className="flex h-full justify-center items-center bg-blue-300 px-4 rounded-lg text-black hover:text-white relative"
             onClick={() => navigate("/settings")}
