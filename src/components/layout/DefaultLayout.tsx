@@ -6,7 +6,7 @@ interface LayoutProps {
 
 function DefaultLayout({ children }: LayoutProps) {
   return (
-    <div className="w-screen h-screen bg-white p-8">
+    <div className="w-screen h-screen bg-white">
       <div className=" h-full flex flex-col overflow-auto">{children}</div>
     </div>
   );
