@@ -5,9 +5,7 @@ function ConsultingLeftSideBar({
 }: {
   openUserSearchModal: () => void;
 }) {
-  // const navigate = useNavigate();
-
-  // const currentUser = JSON.parse(localStorage.getItem("user") || "{}");
+  const currentUser = JSON.parse(localStorage.getItem("user") || "{}");
   return (
     <>
       <div className="h-full min-w-[320px] bg-[#161A1E]">
@@ -15,10 +13,14 @@ function ConsultingLeftSideBar({
           <div className="flex gap-4 items-center cursor-default">
             <img
               className="w-[40px] h-[40px] rounded-md"
-              src={process.env.PUBLIC_URL + "/assets/dev-jeans.png"}
-              alt="workspace"
+              src={
+                currentUser.profileUrl
+                  ? currentUser.profileUrl
+                  : process.env.PUBLIC_URL + "/assets/dev-jeans.png"
+              }
+              alt="user"
             />
-            <div className="text-white">종훈</div>
+            <div className="text-white">{currentUser.userName}</div>
           </div>
         </div>
         <button

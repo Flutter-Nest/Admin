@@ -40,6 +40,7 @@ const SignIn: FC = () => {
         {},
         { headers }
       );
+      localStorage.setItem("user", JSON.stringify(result.data.user));
       Cookies.set("accessToken", result.data.accessToken);
       Cookies.set("refreshToken", result.data.refreshToken);
       navigate("/schedule");
