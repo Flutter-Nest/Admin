@@ -1,7 +1,5 @@
 import DefaultLayout from "../components/layout/DefaultLayout";
-import LeftSideBar from "../components/layout/LeftSideBar";
-import NavigationBar from "../components/layout/NavigationBar";
-import Wrapper from "../components/layout/Wrapper";
+import ScheduleLeftSideBar from "../components/layout/ScheduleLeftSideBar";
 import UserSearchModal from "../components/modals/UserSearchModal";
 import useModal from "../hooks/useModal";
 
@@ -14,16 +12,13 @@ function Schedule() {
   } = useModal();
   return (
     <DefaultLayout>
-      <NavigationBar />
-      <Wrapper>
-        <LeftSideBar openUserSearchModal={openUserSearchModal} />
-        {isUserSearchModalOpen && (
-          <UserSearchModal
-            userSearchModalRef={userSearchModalRef}
-            closeUserSearchModal={closeUserSearchModal}
-          />
-        )}
-      </Wrapper>
+      <ScheduleLeftSideBar openUserSearchModal={openUserSearchModal} />
+      {isUserSearchModalOpen && (
+        <UserSearchModal
+          userSearchModalRef={userSearchModalRef}
+          closeUserSearchModal={closeUserSearchModal}
+        />
+      )}
     </DefaultLayout>
   );
 }
