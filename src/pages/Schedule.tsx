@@ -5,7 +5,7 @@ import Wrapper from "../components/layout/Wrapper";
 import UserSearchModal from "../components/modals/UserSearchModal";
 import useModal from "../hooks/useModal";
 
-function Main() {
+function Schedule() {
   const {
     isOpen: isUserSearchModalOpen,
     modalRef: userSearchModalRef,
@@ -28,4 +28,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default Schedule;

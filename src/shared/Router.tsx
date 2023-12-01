@@ -5,7 +5,7 @@ import { useSetRecoilState } from "recoil";
 import { isLoggedInState } from "../states/userState";
 
 import Cookies from "js-cookie";
-import Main from "../pages/Main";
+import Schedule from "../pages/Schedule";
 import SignIn from "../pages/SignIn";
 const Router = () => {
   const setIsLoggedIn = useSetRecoilState(isLoggedInState);
@@ -26,7 +26,7 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<SignIn />} />
-        <Route path="/main" element={<Main />} />
+        <Route path="/schedule" element={<Schedule />} />
       </Routes>
     </BrowserRouter>
   );

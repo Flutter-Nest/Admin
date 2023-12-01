@@ -42,7 +42,7 @@ const SignIn: FC = () => {
       );
       Cookies.set("accessToken", result.data.accessToken);
       Cookies.set("refreshToken", result.data.refreshToken);
-      navigate("/main");
+      navigate("/schedule");
     } catch (error: any) {
       console.error("Signin error:", error.response?.data || error.message);
     }
