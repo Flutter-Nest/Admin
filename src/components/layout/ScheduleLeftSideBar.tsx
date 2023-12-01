@@ -1,6 +1,6 @@
 import { BsPerson } from "react-icons/bs";
 
-function LeftSideBar({
+function ScheduleLeftSideBar({
   openUserSearchModal,
 }: {
   openUserSearchModal: () => void;
@@ -53,4 +53,4 @@ function LeftSideBar({
     </>
   );
 }
-export default LeftSideBar;
+export default ScheduleLeftSideBar;
