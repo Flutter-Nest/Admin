@@ -7,10 +7,9 @@ axios.interceptors.request.use(
   (config) => {
     const token = Cookies.get("accessToken");
     if (token) {
-      config.headers["Authorization"] = `Bearer ${token}`;
+      config.headers["authorization"] = `Bearer ${token}`;
     }
     config.withCredentials = true;
-
     return config;
   },
   (error) => {
@@ -20,18 +19,36 @@ axios.interceptors.request.use(
 
 axios.interceptors.response.use(
   async (response) => {
-    if (response.data && response.data.newAccessToken) {
-      Cookies.set("accessToken", response.data.newAccessToken);
-      const originalRequest = response.config;
-      originalRequest.headers["Authorization"] = response.data.newAccessToken;
-      return await axios(originalRequest);
-    }
     return response;
   },
   async (error) => {
     const originalRequest = error.config;
     if (error.response.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
+      const refreshToken = Cookies.get("refreshToken");
+      if (refreshToken) {
+        try {
+          const axiosInstance = axios.create();
+          const tokenResponse = await axiosInstance.post(
+            API_BASE_URL + "/auth/token",
+            {},
+            {
+              headers: {
+                Authorization: `Bearer ${refreshToken}`,
+              },
+            }
+          );
+          console.log("tokenResponse", tokenResponse);
+          const newAccessToken = tokenResponse.data.accessToken;
+          Cookies.set("accessToken", newAccessToken);
+          originalRequest.headers["authorization"] = `Bearer ${newAccessToken}`;
+
+          return axios(originalRequest);
+        } catch (tokenError) {
+          console.log("tokenError", tokenError);
+          return Promise.reject(tokenError);
+        }
+      }
     }
     return Promise.reject(error);
   }

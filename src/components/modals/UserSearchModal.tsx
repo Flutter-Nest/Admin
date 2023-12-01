@@ -16,9 +16,7 @@ const UserSearchModal: React.FC<UserSearchModalProps> = ({
   const currentUser = JSON.parse(localStorage.getItem("user") || "{}");
   const fetchUsers = async (queryKey: any) => {
     const query = queryKey.queryKey[1];
-    const result = await getAPI(
-      `/api/users/search?email=${query}&name=${query}`
-    );
+    const result = await getAPI(`/user/search?email=${query}&name=${query}`);
     return result.data;
   };
 
@@ -63,11 +61,12 @@ const UserSearchModal: React.FC<UserSearchModalProps> = ({
         {data && data.length > 0 && (
           <ul>
             {data
-              .filter((user: any) => user.userId !== currentUser.userId)
+              // .filter((user: any) => user.userId !== currentUser.userId)
               .map((user: any) => (
                 <div className="flex flex-col items-start justify-center w-full h-full px-3">
-                  <li>{user.email}</li>
-                  <li>{user.name}</li>
+                  <div>
+                    {user.userName} 고{user.grade} {user.className}
+                  </div>
                 </div>
               ))}
           </ul>

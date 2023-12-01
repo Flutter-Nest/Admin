@@ -30,12 +30,12 @@ const SignIn: FC = () => {
     try {
       const rawString = `${signinRequest.email}:${signinRequest.password}`;
       const token = btoa(rawString);
-
+      const axiosInstance = axios.create();
       const headers = {
         Authorization: `Basic ${token}`,
       };
 
-      const result = await axios.post(
+      const result = await axiosInstance.post(
         `${process.env.REACT_APP_SERVER_URL}/auth/login`,
         {},
         { headers }
