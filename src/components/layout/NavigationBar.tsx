@@ -1,8 +1,9 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Navbar() {
   const navigate = useNavigate();
-
+  const location = useLocation();
+  const isActive = (path: string) => location.pathname === path;
   // const logout = async () => {
   //   await postAPI("/api/logout", {});
   // };
@@ -12,7 +13,7 @@ function Navbar() {
       <nav className="w-full h-16 py-3 pl-1 pr-4 flex justify-between bg-[#1D2125] z-10 ">
         <div className="flex gap-8 cursor-pointer">
           <div
-            onClick={() => navigate("/main")}
+            onClick={() => navigate("/schedule")}
             className="flex h-full justify-center items-center text-white"
           >
             <img
@@ -22,31 +23,41 @@ function Navbar() {
             />
           </div>
           <button
-            className="flex h-full justify-center items-center bg-blue-300 px-4 rounded-lg text-black hover:text-white relative"
-            onClick={() => navigate("/main")}
+            className={`flex h-full justify-center items-center px-4 rounded-lg text-black hover:text-white relative ${
+              isActive("/schedule") ? "bg-blue-300" : ""
+            }`}
+            onClick={() => navigate("/schedule")}
           >
             Schedule
           </button>
           <button
-            className="flex h-full justify-center items-center bg-blue-300 px-4 rounded-lg text-black hover:text-white relative"
+            className={`flex h-full justify-center items-center px-4 rounded-lg text-black hover:text-white relative ${
+              isActive("/opus") ? "bg-blue-300" : ""
+            }`}
             onClick={() => navigate("/opus")}
           >
             OPUS
           </button>
           <button
-            className="flex h-full justify-center items-center bg-blue-300 px-4 rounded-lg text-black hover:text-white relative"
+            className={`flex h-full justify-center items-center px-4 rounded-lg text-black hover:text-white relative ${
+              isActive("/consulting") ? "bg-blue-300" : ""
+            }`}
             onClick={() => navigate("/consulting")}
           >
             Consulting
           </button>
           <button
-            className="flex h-full justify-center items-center bg-blue-300 px-4 rounded-lg text-black hover:text-white relative"
+            className={`flex h-full justify-center items-center px-4 rounded-lg text-black hover:text-white relative ${
+              isActive("/link") ? "bg-blue-300" : ""
+            }`}
             onClick={() => navigate("/link")}
           >
             LINK
           </button>
           <button
-            className="flex h-full justify-center items-center bg-blue-300 px-4 rounded-lg text-black hover:text-white relative"
+            className={`flex h-full justify-center items-center px-4 rounded-lg text-black hover:text-white relative ${
+              isActive("/settings") ? "bg-blue-300" : ""
+            }`}
             onClick={() => navigate("/settings")}
           >
             Settings
