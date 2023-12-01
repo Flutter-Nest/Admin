@@ -6,11 +6,13 @@ import { getAPI } from "../../axios";
 interface UserSearchModalProps {
   userSearchModalRef: any;
   closeUserSearchModal: () => void;
+  onUserSelect: (user: any) => void;
 }
 
 const UserSearchModal: React.FC<UserSearchModalProps> = ({
   userSearchModalRef,
   closeUserSearchModal,
+  onUserSelect,
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const fetchUsers = async (queryKey: any) => {
@@ -60,10 +62,16 @@ const UserSearchModal: React.FC<UserSearchModalProps> = ({
         {data && data.length > 0 && (
           <ul>
             {data.map((user: any) => (
-              <div className="flex flex-col items-start justify-center w-full h-full px-3">
-                <div>
-                  {user.userName} 고{user.grade} {user.className}
-                </div>
+              <div
+                className="flex flex-col items-start justify-center w-full h-full px-3"
+                onClick={() => {
+                  onUserSelect(user);
+                  closeUserSearchModal();
+                }}
+              >
+                <button>
+                  고{user.grade} {user.className} {user.userName}
+                </button>
               </div>
             ))}
           </ul>
