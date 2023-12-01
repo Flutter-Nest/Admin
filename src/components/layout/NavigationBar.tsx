@@ -23,40 +23,40 @@ function Navbar() {
             />
           </div>
           <button
-            className={`flex h-full justify-center items-center px-4 rounded-lg text-black hover:text-white relative ${
-              isActive("/schedule") ? "bg-blue-300" : ""
+            className={`flex h-full justify-center items-center px-4 rounded-lg relative ${
+              isActive("/schedule") ? "bg-blue-300 text-black" : "text-white"
             }`}
             onClick={() => navigate("/schedule")}
           >
             Schedule
           </button>
           <button
-            className={`flex h-full justify-center items-center px-4 rounded-lg text-black hover:text-white relative ${
-              isActive("/opus") ? "bg-blue-300" : ""
+            className={`flex h-full justify-center items-center px-4 rounded-lg relative ${
+              isActive("/opus") ? "bg-blue-300 text-black" : "text-white"
             }`}
             onClick={() => navigate("/opus")}
           >
             OPUS
           </button>
           <button
-            className={`flex h-full justify-center items-center px-4 rounded-lg text-black hover:text-white relative ${
-              isActive("/consulting") ? "bg-blue-300" : ""
+            className={`flex h-full justify-center items-center px-4 rounded-lg relative ${
+              isActive("/consulting") ? "bg-blue-300 text-black" : "text-white"
             }`}
             onClick={() => navigate("/consulting")}
           >
             Consulting
           </button>
           <button
-            className={`flex h-full justify-center items-center px-4 rounded-lg text-black hover:text-white relative ${
-              isActive("/link") ? "bg-blue-300" : ""
+            className={`flex h-full justify-center items-center px-4 rounded-lg relative ${
+              isActive("/link") ? "bg-blue-300 text-black" : "text-white"
             }`}
             onClick={() => navigate("/link")}
           >
             LINK
           </button>
           <button
-            className={`flex h-full justify-center items-center px-4 rounded-lg text-black hover:text-white relative ${
-              isActive("/settings") ? "bg-blue-300" : ""
+            className={`flex h-full justify-center items-center px-4 rounded-lg relative ${
+              isActive("/settings") ? "bg-blue-300 text-black" : "text-white"
             }`}
             onClick={() => navigate("/settings")}
           >
