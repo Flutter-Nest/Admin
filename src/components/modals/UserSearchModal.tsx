@@ -63,6 +63,7 @@ const UserSearchModal: React.FC<UserSearchModalProps> = ({
           <ul>
             {data.map((user: any) => (
               <div
+                key={user.userId}
                 className="flex flex-col items-start justify-center w-full h-full px-3"
                 onClick={() => {
                   onUserSelect(user);
