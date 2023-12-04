@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { postAPI } from "../../axios";
-import ConsultingLeftSideBar from "../../components/layout/ConsultingLeftSideBar";
 import DefaultLayout from "../../components/layout/DefaultLayout";
 import Wrapper from "../../components/layout/Wrapper";
 import UserSearchModal from "../../components/modals/UserSearchModal";
 import useModal from "../../hooks/useModal";
 import { getISODateTime } from "../../utils/transformDateTime";
+import ConsultingLeftSideBar from "./ConsultingLeftSideBar";
 import ConsultingSelectButton from "./ConsultingSelectButton";
 import ViewConsultingMessage from "./ViewingConsultingMessage";
 import WriteConsultingMessage from "./WriteConsultingMessage";
@@ -88,7 +88,7 @@ function Consulting() {
             )}
             {!selectedUser && (
               <div className="w-full h-full flex justify-center items-center">
-                <div>컨설팅 메시지를 받을 학생을 선택해주세요🙇‍♀️</div>
+                <div>학생을 선택해주세요🙇‍♀️</div>
               </div>
             )}
           </div>

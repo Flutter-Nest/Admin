@@ -26,12 +26,11 @@ function ViewConsultingMessage({ selectedUser, mode }: any) {
             <button onClick={() => setSelectedMessage(null)}>x</button>
           </div>
           <div>
-            받는사람: 고{selectedMessage.student.grade}{" "}
-            {selectedMessage.student.className}{" "}
-            {selectedMessage.student.userName}
+            받는사람: 고{selectedMessage.grade} {selectedMessage.className}{" "}
+            {selectedMessage.student}
           </div>
           <div>
-            컨설팅 주차: {selectedMessage.startDate.split("T")[0]}~{" "}
+            컨설팅 주차: {selectedMessage.startDate.split("T")[0]} ~{" "}
             {selectedMessage.endDate.split("T")[0]}
           </div>
           <div>작성 일자: {selectedMessage.createdAt.split("T")[0]}</div>

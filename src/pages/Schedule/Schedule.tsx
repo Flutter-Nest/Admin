@@ -1,8 +1,8 @@
 import { useState } from "react";
-import DefaultLayout from "../components/layout/DefaultLayout";
-import ScheduleLeftSideBar from "../components/layout/ScheduleLeftSideBar";
-import UserSearchModal from "../components/modals/UserSearchModal";
-import useModal from "../hooks/useModal";
+import DefaultLayout from "../../components/layout/DefaultLayout";
+import UserSearchModal from "../../components/modals/UserSearchModal";
+import useModal from "../../hooks/useModal";
+import ScheduleLeftSideBar from "./ScheduleLeftSideBar";
 
 function Schedule() {
   const [, setSelectedUser] = useState(null);
