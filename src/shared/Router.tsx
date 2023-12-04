@@ -2,7 +2,7 @@ import Cookies from "js-cookie";
 import { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
-import Consulting from "../pages/Consulting";
+import Consulting from "../pages/Consulting/Consulting";
 import LinkPage from "../pages/Link";
 import Opus from "../pages/Opus";
 import Schedule from "../pages/Schedule";
