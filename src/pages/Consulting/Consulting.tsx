@@ -1,16 +1,21 @@
 import { useState } from "react";
-import { postAPI } from "../axios";
-import ConsultingLeftSideBar from "../components/layout/ConsultingLeftSideBar";
-import DefaultLayout from "../components/layout/DefaultLayout";
-import Wrapper from "../components/layout/Wrapper";
-import UserSearchModal from "../components/modals/UserSearchModal";
-import useModal from "../hooks/useModal";
+import { postAPI } from "../../axios";
+import ConsultingLeftSideBar from "../../components/layout/ConsultingLeftSideBar";
+import DefaultLayout from "../../components/layout/DefaultLayout";
+import Wrapper from "../../components/layout/Wrapper";
+import UserSearchModal from "../../components/modals/UserSearchModal";
+import useModal from "../../hooks/useModal";
+import { getISODateTime } from "../../utils/transformDateTime";
+import ConsultingSelectButton from "./ConsultingSelectButton";
+import ViewConsultingMessage from "./ViewingConsultingMessage";
+import WriteConsultingMessage from "./WriteConsultingMessage";
 
 function Consulting() {
   const [selectedUser, setSelectedUser] = useState<any>(null);
   const [message, setMessage] = useState<string>("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const [mode, setMode] = useState("selecting");
 
   const {
     isOpen: isUserSearchModalOpen,
@@ -33,10 +38,8 @@ function Consulting() {
         startDate: formattedStartDate,
         endDate: formattedEndDate,
       });
-      setSelectedUser(null);
       setMessage("");
-      setStartDate("");
-      setEndDate("");
+      setMode("viewing");
     } catch (err) {
       console.log(err);
     }
@@ -55,52 +58,35 @@ function Consulting() {
     setEndDate(formattedEndDate);
   };
 
-  const getISODateTime = (dateString: any) => {
-    const date = new Date(dateString);
-    return date.toISOString();
-  };
-
   return (
     <DefaultLayout>
       <Wrapper>
         <ConsultingLeftSideBar openUserSearchModal={openUserSearchModal} />
         <div className="w-full h-full flex justify-center items-center">
           <div className="w-3/4 h-5/6 flex flex-col bg-white rounded-lg p-8">
-            {selectedUser ? (
-              <>
-                <div>보내는사람: {currentUser.userName}</div>
-                <div>
-                  받는사람: 고{selectedUser.grade} {selectedUser.className}{" "}
-                  {selectedUser.userName}
-                </div>
-                <div>
-                  컨설팅 주차:{" "}
-                  <input
-                    type="date"
-                    value={startDate}
-                    onChange={(e) => handleStartDateChange(e.target.value)}
-                  />{" "}
-                  ~{" "}
-                  <input
-                    type="date"
-                    value={endDate}
-                    onChange={(e) => handleStartDateChange(e.target.value)}
-                  />
-                </div>
-                <textarea
-                  className="w-full h-40 mt-4 p-2 border rounded"
-                  placeholder="컨설팅 내용을 입력해주세요."
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                />
-                <button
-                  className="w-24 h-10 mt-4 self-end bg-blue-500 text-white rounded p-2 hover:bg-blue-700"
-                  onClick={submitConsultingMessage}
-                >
-                  보내기
-                </button>
-              </>
-            ) : (
+            {selectedUser && mode === "selecting" && (
+              <ConsultingSelectButton setMode={setMode} />
+            )}
+            {mode === "writing" && (
+              <WriteConsultingMessage
+                currentUser={currentUser}
+                selectedUser={selectedUser}
+                startDate={startDate}
+                endDate={endDate}
+                message={message}
+                setMessage={setMessage}
+                handleStartDateChange={handleStartDateChange}
+                submitConsultingMessage={submitConsultingMessage}
+              />
+            )}
+            {mode === "viewing" && (
+              <ViewConsultingMessage
+                currentUser={currentUser}
+                selectedUser={selectedUser}
+                mode={mode}
+              />
+            )}
+            {!selectedUser && (
               <div className="w-full h-full flex justify-center items-center">
                 <div>컨설팅 메시지를 받을 학생을 선택해주세요🙇‍♀️</div>
               </div>
@@ -112,7 +98,10 @@ function Consulting() {
           <UserSearchModal
             userSearchModalRef={userSearchModalRef}
             closeUserSearchModal={closeUserSearchModal}
-            onUserSelect={(user) => setSelectedUser(user)}
+            onUserSelect={(user) => {
+              setSelectedUser(user);
+              setMode("selecting");
+            }}
           />
         )}
       </Wrapper>
