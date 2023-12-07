@@ -45,17 +45,12 @@ function Consulting() {
     }
   };
 
-  const handleStartDateChange = (date: any) => {
+  const handleStartDateChange = (date: string) => {
     setStartDate(date);
+  };
 
-    const startDateObj = new Date(date);
-    const endDateObj = new Date(startDateObj);
-    endDateObj.setDate(startDateObj.getDate() + 6);
-
-    const formattedEndDate = `${endDateObj.getFullYear()}-${
-      endDateObj.getMonth() + 1
-    }-${endDateObj.getDate()}`;
-    setEndDate(formattedEndDate);
+  const handleEndDateChange = (date: string) => {
+    setEndDate(date);
   };
 
   return (
@@ -76,6 +71,7 @@ function Consulting() {
                 message={message}
                 setMessage={setMessage}
                 handleStartDateChange={handleStartDateChange}
+                handleEndDateChange={handleEndDateChange}
                 submitConsultingMessage={submitConsultingMessage}
               />
             )}

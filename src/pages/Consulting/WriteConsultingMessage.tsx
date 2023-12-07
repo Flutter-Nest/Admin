@@ -6,6 +6,7 @@ function WriteConsultingMessage({
   message,
   setMessage,
   handleStartDateChange,
+  handleEndDateChange,
   submitConsultingMessage,
 }: any) {
   return (
@@ -26,7 +27,7 @@ function WriteConsultingMessage({
         <input
           type="date"
           value={endDate}
-          onChange={(e) => handleStartDateChange(e.target.value)}
+          onChange={(e) => handleEndDateChange(e.target.value)}
         />
       </div>
       <textarea
