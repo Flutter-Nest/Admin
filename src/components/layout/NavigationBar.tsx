@@ -56,11 +56,13 @@ function Navbar() {
           </button>
           <button
             className={`flex h-full justify-center items-center px-4 rounded-lg relative ${
-              isActive("/settings") ? "bg-blue-300 text-black" : "text-white"
+              isActive("/notification")
+                ? "bg-blue-300 text-black"
+                : "text-white"
             }`}
-            onClick={() => navigate("/settings")}
+            onClick={() => navigate("/notification")}
           >
-            Settings
+            Notification
           </button>
         </div>
       </nav>

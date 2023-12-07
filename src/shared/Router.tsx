@@ -4,9 +4,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import Consulting from "../pages/Consulting/Consulting";
 import LinkPage from "../pages/Link/Link";
+import Notification from "../pages/Notification/Notification";
 import Opus from "../pages/Opus/Opus";
 import Schedule from "../pages/Schedule/Schedule";
-import Settings from "../pages/Settings";
 import SignIn from "../pages/SignIn";
 import { isLoggedInState } from "../states/userState";
 
@@ -33,7 +33,7 @@ const Router = () => {
         <Route path="/opus" element={<Opus />} />
         <Route path="/consulting" element={<Consulting />} />
         <Route path="/link" element={<LinkPage />} />
-        <Route path="/settings" element={<Settings />} />
+        <Route path="/notification" element={<Notification />} />
       </Routes>
     </BrowserRouter>
   );
