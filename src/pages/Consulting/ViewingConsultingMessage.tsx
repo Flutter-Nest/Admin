@@ -34,7 +34,9 @@ function ViewConsultingMessage({ selectedUser, mode }: any) {
             {selectedMessage.endDate.split("T")[0]}
           </div>
           <div>작성 일자: {selectedMessage.createdAt.split("T")[0]}</div>
-          <div>{selectedMessage.content}</div>
+          <div className="bg-[#F1F1EF] mt-2 h-96 p-2 rounded-md shadow-sm overflow-auto">
+            {selectedMessage.content}
+          </div>
         </>
       ) : (
         <>
