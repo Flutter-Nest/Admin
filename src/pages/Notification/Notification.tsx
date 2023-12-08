@@ -1,11 +1,12 @@
 import DefaultLayout from "../../components/layout/DefaultLayout";
+import CreateNotification from "./CreateNotification";
 import NotificationLeftSideBar from "./NotificationLeftSideBar";
 
 function Notification() {
   return (
     <DefaultLayout>
       <NotificationLeftSideBar />
-      <div>Notification</div>
+      <CreateNotification />
     </DefaultLayout>
   );
 }
